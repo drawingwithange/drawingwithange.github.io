@@ -1,0 +1,19 @@
+/* css/style.css */
+/* Add any custom styles here if Bootstrap defaults aren't enough */
+
+body {
+    /* Example: Add a subtle background */
+    /* background-color: #f8f9fa; */
+}
+
+#sidebar {
+    /* Example: Add a border */
+    /* border-right: 1px solid #dee2e6; */
+}
+
+/* Style for the active sidebar link */
+#sidebar .list-group-item.active {
+    background-color: #0d6efd; /* Bootstrap primary blue */
+    color: white;
+    border-color: #0d6efd;
+}
