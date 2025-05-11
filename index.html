@@ -13,8 +13,10 @@
     <style>
         /* Keep basic layout styles or move them to style.css */
         #content-area {
-            min-height: 80vh; /* Ensure content area has some height */
+            min-height: 80vh; /* Ensure content area has at least this height */
             padding-top: 1rem;
+            overflow-y: auto; /* Allow vertical scrolling within the content area if needed */
+            max-height: 100vh; /* Constrain its height to the viewport height */
         }
         /* Ensure sidebar links look clickable */
         #sidebar .nav-link {
@@ -148,9 +150,13 @@
 
             <!-- Right Content Area (Remains the same) -->
             <main id="content-area" class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <!-- Initial Content -->
-                <h1>Hello Ange</h1>
-                <p>Welcome to the website. Select a page from the sidebar to view its content.</p>
+                <!-- Banner Image -->
+                <img src="./images/banner_wide.jpg" alt="Drawing with Ange Banner" class="img-fluid mb-3">
+                <!-- Text Content Wrapper for Debugging -->
+                   <h1>Drawing with Ange</h1>
+                    <p>Welcome to my cozy world.</p>
+                    <p>I create ASMR videos filled with soft drawing sounds, digital art, and marker coloring.</p>
+                    <p>-- All starring my own characters.</p>
             </main>
         </div>
     </div>
