@@ -61,13 +61,16 @@
       <symbol id="chevron-down" viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
       </symbol>
+      <symbol id="list" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+      </symbol>
       <!-- Add other SVG symbols as needed -->
     </svg>
 
     <div class="container-fluid">
         <div class="row">
             <!-- Left Sidebar - Updated Structure with Toggles -->
-            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse show vh-100 p-0">
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse vh-100 p-0">
                 <div class="d-flex flex-column flex-shrink-0 p-3 h-100" >
                     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
                         <img src="./images/ange_circle.jpg" alt="Drawing with Ange" class="me-2" width="32" height="32" style="border-radius: 50%; object-fit: cover;">
@@ -150,6 +153,10 @@
 
             <!-- Right Content Area (Remains the same) -->
             <main id="content-area" class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <!-- Hamburger Button for Mobile -->
+                <button class="btn btn-light d-md-none my-3" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+                    <svg class="bi me-1" width="20" height="20"><use xlink:href="#list"/></svg> Menu
+                </button>
                 <!-- Banner Image -->
                 <img src="./images/banner_wide.jpg" alt="Drawing with Ange Banner" class="img-fluid mb-3">
                 <!-- Text Content Wrapper for Debugging -->
