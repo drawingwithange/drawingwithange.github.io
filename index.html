@@ -257,7 +257,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // 메뉴 클릭 시 닫기 (페이지 이동/로딩)
   sidebar.querySelectorAll('.nav-link[data-page]').forEach(link => {
-    link.addEventListener('click', function() {
+    link.addEventListener('click', function(e) {
+      // YouTube Videos 메뉴에서 자동 클릭된 경우에는 닫지 않도록
+      if (link.dataset.autoclick) {
+        // 자동 클릭 후 플래그 제거
+        delete link.dataset.autoclick;
+        return;
+      }
       if (window.innerWidth < 768) {
         closeSidebar();
       }
@@ -269,21 +275,24 @@ document.addEventListener('DOMContentLoaded', function() {
   if (youtubeMenu) {
     youtubeMenu.addEventListener('click', function(e) {
       const submenu = document.querySelector('#long-collapse');
-      // 서브메뉴가 닫혀 있으면 먼저 열고, 열린 후 첫번째 링크 클릭
       if (submenu && !submenu.classList.contains('show')) {
-        // Bootstrap collapse를 수동으로 열기
         const bsCollapse = bootstrap.Collapse.getOrCreateInstance(submenu);
         bsCollapse.show();
-        // collapse 애니메이션이 끝난 후 첫번째 링크 클릭
         submenu.addEventListener('shown.bs.collapse', function handler() {
           const firstSubLink = submenu.querySelector('.nav-link[data-page]');
-          if (firstSubLink) firstSubLink.click();
+          if (firstSubLink) {
+            // 자동 클릭임을 표시
+            firstSubLink.dataset.autoclick = "true";
+            firstSubLink.click();
+          }
           submenu.removeEventListener('shown.bs.collapse', handler);
         });
       } else if (submenu && submenu.classList.contains('show')) {
-        // 이미 열려 있으면 바로 첫번째 링크 클릭
         const firstSubLink = submenu.querySelector('.nav-link[data-page]');
-        if (firstSubLink) firstSubLink.click();
+        if (firstSubLink) {
+          firstSubLink.dataset.autoclick = "true";
+          firstSubLink.click();
+        }
       }
     });
   }
