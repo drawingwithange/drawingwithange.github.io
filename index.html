@@ -60,43 +60,63 @@
             font-family: "Sour Gummy", sans-serif;
         }
 
-        @media (max-width: 767.98px) {
-          #sidebar {
-            position: fixed !important;
-            top: 0;
-            left: 0;
-            height: 100vh !important;
-            width: 80vw;
+        .main-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+        .sidebar {
+            width: 260px;
+            min-width: 200px;
             max-width: 320px;
-            z-index: 1050;
+            border-right: 1px solid #eee;
             background: #fff;
-            box-shadow: 2px 0 8px rgba(0,0,0,0.15);
-            transform: translateX(-100%);
             transition: transform 0.3s cubic-bezier(.4,0,.2,1);
-            display: block !important;
-          }
-          #sidebar.sidebar-open {
-            transform: translateX(0);
-          }
-          #sidebar-backdrop {
+        }
+        .content-area {
+            flex: 1 1 0;
+            padding: 2rem 1rem 1rem 1rem;
+            min-width: 0;
+        }
+        #sidebar-backdrop {
             display: none;
-            position: fixed;
-            z-index: 1040;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.2);
-          }
-          #sidebar-backdrop.active {
-            display: block;
-          }
-          #content-area {
-            position: relative;
-            z-index: 1;
-          }
+        }
+        /* 모바일 오버레이 스타일 */
+        @media (max-width: 767.98px) {
+            .main-layout {
+                display: block;
+            }
+            .sidebar {
+                position: fixed;
+                top: 0; left: 0;
+                height: 100vh;
+                width: 80vw;
+                max-width: 320px;
+                z-index: 1050;
+                background: #fff;
+                box-shadow: 2px 0 8px rgba(0,0,0,0.15);
+                transform: translateX(-100%);
+                transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+            }
+            .sidebar.sidebar-open {
+                transform: translateX(0);
+            }
+            #sidebar-backdrop {
+                display: none;
+                position: fixed;
+                z-index: 1040;
+                top: 0; left: 0; right: 0; bottom: 0;
+                background: rgba(0,0,0,0.2);
+            }
+            #sidebar-backdrop.active {
+                display: block;
+            }
+            .content-area {
+                padding: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-
     <!-- SVG Symbol Definitions -->
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
       <symbol id="house-door-fill" viewBox="0 0 16 16">
@@ -120,90 +140,86 @@
       <!-- Add other SVG symbols as needed -->
     </svg>
 
-    <div class="container-fluid">
-        <div class="row">
-            <!-- 오버레이 백드롭 추가 -->
-            <div id="sidebar-backdrop"></div>
-            <!-- Left Sidebar - Updated Structure with Toggles -->
-            <nav id="sidebar" class="bg-light sidebar vh-100 p-0">
-                <div class="d-flex flex-column flex-shrink-0 p-3 h-100" >
-                    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-                        <img src="./images/ange_circle.jpg" alt="Drawing with Ange" class="me-2" width="32" height="32" style="border-radius: 50%; object-fit: cover;">
-                        <span class="fs-4">Drawing with Ange</span>
-                    </a>
-                    <hr>
-                    <ul class="nav nav-pills flex-column mb-auto">
+    <div class="main-layout">
+        <!-- Sidebar -->
+        <nav id="sidebar" class="sidebar bg-light">
+            <div class="d-flex flex-column flex-shrink-0 p-3 h-100">
+                <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+                    <img src="./images/ange_circle.jpg" alt="Drawing with Ange" class="me-2" width="32" height="32" style="border-radius: 50%; object-fit: cover;">
+                    <span class="fs-4">Drawing with Ange</span>
+                </a>
+                <hr>
+                <ul class="nav nav-pills flex-column mb-auto">
+                    <!-- Short Menu (Collapsible) -->
+                    <li class="nav-item">
+                        <a href="#short-collapse" class="nav-link link-dark d-flex justify-content-between align-items-center">
+                            <span>
+                                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#file-earmark-text"/></svg>
+                                Meet the Characters
+                            </span>
+                            <svg class="bi pe-none chevron" width="16" height="16"><use xlink:href="#chevron-down"/></svg>
+                        </a>
+                        <div class="collapse submenu" id="short-collapse">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link link-dark" data-page="pages/meet_ange.html">
+                                        Ange
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
 
-                        <!-- Short Menu (Collapsible) -->
-                        <li class="nav-item">
-                            <a href="#short-collapse" class="nav-link link-dark d-flex justify-content-between align-items-center">
-                                <span>
-                                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#file-earmark-text"/></svg>
-                                    Meet the Characters
-                                </span>
-                                <svg class="bi pe-none chevron" width="16" height="16"><use xlink:href="#chevron-down"/></svg>
-                            </a>
-                            <div class="collapse submenu" id="short-collapse">
-                                <ul class="nav flex-column">
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link link-dark" data-page="pages/meet_ange.html">
-                                            Ange
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
+                    <!-- Long Menu (Collapsible) -->
+                    <li class="nav-item">
+                         <a href="#long-collapse" class="nav-link link-dark d-flex justify-content-between align-items-center">
+                            <span>
+                                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#file-earmark-text"/></svg>
+                                YouTube Videos
+                            </span>
+                            <svg class="bi pe-none chevron" width="16" height="16"><use xlink:href="#chevron-down"/></svg>
+                        </a>
+                        <div class="collapse submenu" id="long-collapse">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link link-dark" data-page="pages/youtube_page_01.html">
+                                        Lollipop
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
 
-                        <!-- Long Menu (Collapsible) -->
-                        <li class="nav-item">
-                             <a href="#long-collapse" class="nav-link link-dark d-flex justify-content-between align-items-center">
-                                <span>
-                                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#file-earmark-text"/></svg>
-                                    YouTube Videos
-                                </span>
-                                <svg class="bi pe-none chevron" width="16" height="16"><use xlink:href="#chevron-down"/></svg>
-                            </a>
-                            <div class="collapse submenu" id="long-collapse">
-                                <ul class="nav flex-column">
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link link-dark" data-page="pages/youtube_page_01.html">
-                                            Lollipop
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <!-- About Menu (Direct Link - Not Collapsible) -->
-                        <li class="nav-item">
-                            <a href="#" class="nav-link link-dark" data-page="pages/about.html">
-                                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#person-circle"/></svg>
-                                About Ange
-                            </a>
-                        </li>
-                    </ul>
-                    <hr>
-                </div>
-            </nav>
-
-            <!-- Right Content Area (Remains the same) -->
-            <main id="content-area" class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <!-- Hamburger Button for Mobile -->
-                <button id="sidebar-toggle-btn" class="btn btn-light d-md-none my-3" type="button" aria-label="Toggle navigation">
-                    <svg class="bi me-1" width="20" height="20"><use xlink:href="#list"/></svg> Menu
-                </button>
-                <!-- Banner Image -->
-                <img src="./images/banner_wide_03.jpg" alt="Drawing with Ange Banner" class="img-fluid mb-3">
-                <!-- Text Content Wrapper for Debugging -->
-                   <p></p>
-                   <h1>Welcome to my cozy world!</h1>
-                   <p></p>
-                    <p>I create ASMR videos filled with soft drawing sounds, digital art, and marker coloring - all starring my own characters.</p>
-                    <p>If you love peaceful vibes and gentle creativity with a touch of cuteness, you are in the right place</p>
-                    <p>Enjoy Drawing with Ange today!</p>                    
-                    <p>Visit my <a href="https://www.youtube.com/@DrawingwithAnge/videos" target="_blank" rel="noopener noreferrer" title="Drawing with Ange on YouTube"><img src="images/youtube_channel_preview.png" alt="Visit Drawing with Ange on YouTube" style="max-width: 200px; height: auto; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); vertical-align: middle; margin: 0 3px;"></a> for more videos!</p>
-            </main>
-        </div>
+                    <!-- About Menu (Direct Link - Not Collapsible) -->
+                    <li class="nav-item">
+                        <a href="#" class="nav-link link-dark" data-page="pages/about.html">
+                            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#person-circle"/></svg>
+                            About Ange
+                        </a>
+                    </li>
+                </ul>
+                <hr>
+            </div>
+        </nav>
+        <!-- 오버레이 백드롭 -->
+        <div id="sidebar-backdrop"></div>
+        <!-- Main Content -->
+        <main id="content-area" class="content-area">
+            <!-- Hamburger Button for Mobile -->
+            <button id="sidebar-toggle-btn" class="btn btn-light d-md-none my-3" type="button" aria-label="Toggle navigation">
+                <svg class="bi me-1" width="20" height="20"><use xlink:href="#list"/></svg> Menu
+            </button>
+            <!-- Banner Image -->
+            <img src="./images/banner_wide_03.jpg" alt="Drawing with Ange Banner" class="img-fluid mb-3">
+            <!-- Text Content Wrapper for Debugging -->
+               <p></p>
+               <h1>Welcome to my cozy world!</h1>
+               <p></p>
+                <p>I create ASMR videos filled with soft drawing sounds, digital art, and marker coloring - all starring my own characters.</p>
+                <p>If you love peaceful vibes and gentle creativity with a touch of cuteness, you are in the right place</p>
+                <p>Enjoy Drawing with Ange today!</p>                    
+                <p>Visit my <a href="https://www.youtube.com/@DrawingwithAnge/videos" target="_blank" rel="noopener noreferrer" title="Drawing with Ange on YouTube"><img src="images/youtube_channel_preview.png" alt="Visit Drawing with Ange on YouTube" style="max-width: 200px; height: auto; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); vertical-align: middle; margin: 0 3px;"></a> for more videos!</p>
+        </main>
     </div>
 
     <!-- Bootstrap JS Bundle (includes Popper) -->
@@ -220,7 +236,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const contentArea = document.getElementById('content-area');
 
   // 모바일에서 메뉴 열기
-  toggleBtn.addEventListener('click', function() {
+  toggleBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
     sidebar.classList.add('sidebar-open');
     backdrop.classList.add('active');
     document.body.style.overflow = 'hidden'; // 스크롤 방지
