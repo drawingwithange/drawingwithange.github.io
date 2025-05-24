@@ -39,6 +39,14 @@
             /* background-color: #0d6efd; */ /* Example, sidebars.css might handle this */
             /* color: white; */
         }
+        #sidebar .nav-link.active,
+#sidebar .nav-link:active,
+#sidebar .nav-link.show,
+#sidebar .submenu .nav-link.active,
+#sidebar .submenu .nav-link:active {
+    background-color: orange !important;
+    color: #fff !important;
+}
 
         /* Style for the toggle chevron */
         #sidebar .nav-link[data-bs-toggle="collapse"] svg.chevron {
@@ -160,7 +168,7 @@
                            aria-controls="short-collapse">
                             <span>
                                 <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#file-earmark-text"/></svg>
-                                Meet the Characters
+                                Meet Characters
                             </span>
                             <svg class="bi pe-none chevron" width="16" height="16"><use xlink:href="#chevron-down"/></svg>
                         </a>
@@ -238,7 +246,14 @@
                 <p>I create ASMR videos filled with soft drawing sounds, digital art, and marker coloring - all starring my own characters.</p>
                 <p>If you love peaceful vibes and gentle creativity with a touch of cuteness, you are in the right place</p>
                 <p>Enjoy Drawing with Ange today!</p>                    
-                <p>Visit my <a href="https://www.youtube.com/@DrawingwithAnge/videos" target="_blank" rel="noopener noreferrer" title="Drawing with Ange on YouTube"><img src="images/youtube_channel_preview.png" alt="Visit Drawing with Ange on YouTube" style="max-width: 200px; height: auto; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); vertical-align: middle; margin: 0 3px;"></a> for more videos!</p>
+                <p>
+                    Visit my 
+                    <a href="https://www.youtube.com/@DrawingwithAnge/videos" target="_blank" rel="noopener noreferrer" title="Drawing with Ange on YouTube" style="color: orange; font-weight: bold; text-decoration: none;">
+                        Drawing with Ange
+                        <img src="images/YouTube_full-color_icon_(2017).svg.png" alt="Visit Drawing with Ange on YouTube" style="height: 1em; width: auto; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); vertical-align: middle; margin: 0 3px;">
+                    </a>
+                    for more videos!
+                </p>
         </main>
     </div>
 
