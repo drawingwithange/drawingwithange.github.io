@@ -126,12 +126,17 @@
                 z-index: 1100;
                 border-radius: 50%;
                 box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-                width: 48px;
-                height: 48px;
+                width: 72px;   /* 48px → 72px (1.5배) */
+                height: 72px;  /* 48px → 72px (1.5배) */
                 padding: 0;
                 justify-content: center;
                 align-items: center;
                 background: #fff;
+                font-size: 1.25rem;
+            }
+            #sidebar-toggle-btn svg {
+                width: 30px !important;   /* 20px → 30px (1.5배) */
+                height: 30px !important;
             }
         }
         /* PC에서는 메뉴버튼 숨김 */
