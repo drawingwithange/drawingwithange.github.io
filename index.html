@@ -120,9 +120,18 @@
             #sidebar-toggle-btn {
                 display: block !important;
                 position: fixed;
-                top: 16px;
                 left: 16px;
+                bottom: 16px;
+                top: auto;
                 z-index: 1100;
+                border-radius: 50%;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+                width: 48px;
+                height: 48px;
+                padding: 0;
+                justify-content: center;
+                align-items: center;
+                display: flex !important;
             }
         }
         /* PC에서는 메뉴버튼 숨김 */
@@ -259,12 +268,18 @@ document.addEventListener('DOMContentLoaded', function() {
   const toggleBtn = document.getElementById('sidebar-toggle-btn');
   const contentArea = document.getElementById('content-area');
 
-  // 모바일에서 메뉴 열기
+  // 모바일에서 메뉴 열기/닫기 토글
   toggleBtn.addEventListener('click', function(e) {
     e.stopPropagation();
-    sidebar.classList.add('sidebar-open');
-    backdrop.classList.add('active');
-    document.body.style.overflow = 'hidden'; // 스크롤 방지
+    if (sidebar.classList.contains('sidebar-open')) {
+      sidebar.classList.remove('sidebar-open');
+      backdrop.classList.remove('active');
+      document.body.style.overflow = '';
+    } else {
+      sidebar.classList.add('sidebar-open');
+      backdrop.classList.add('active');
+      document.body.style.overflow = 'hidden'; // 스크롤 방지
+    }
   });
 
   // 메뉴 외부 클릭 시 닫기
