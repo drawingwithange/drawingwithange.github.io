@@ -117,6 +117,19 @@
             .content-area {
                 padding: 1rem;
             }
+            #sidebar-toggle-btn {
+                display: block !important;
+                position: fixed;
+                top: 16px;
+                left: 16px;
+                z-index: 1100;
+            }
+        }
+        /* PC에서는 메뉴버튼 숨김 */
+        @media (min-width: 768px) {
+            #sidebar-toggle-btn {
+                display: none !important;
+            }
         }
     </style>
 </head>
@@ -258,10 +271,12 @@ document.addEventListener('DOMContentLoaded', function() {
   // 메뉴 클릭 시 닫기 (페이지 이동/로딩)
   sidebar.querySelectorAll('.nav-link[data-page]').forEach(link => {
     link.addEventListener('click', function(e) {
-      // YouTube Videos 메뉴에서 자동 클릭된 경우에는 닫지 않도록
+      // YouTube Videos 메뉴에서 자동 클릭된 경우에도 닫히게!
       if (link.dataset.autoclick) {
-        // 자동 클릭 후 플래그 제거
         delete link.dataset.autoclick;
+        if (window.innerWidth < 768) {
+          closeSidebar();
+        }
         return;
       }
       if (window.innerWidth < 768) {
