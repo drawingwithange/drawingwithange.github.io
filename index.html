@@ -293,46 +293,11 @@ document.addEventListener('DOMContentLoaded', function() {
   // 메뉴 클릭 시 닫기 (페이지 이동/로딩)
   sidebar.querySelectorAll('.nav-link[data-page]').forEach(link => {
     link.addEventListener('click', function(e) {
-      // YouTube Videos 메뉴에서 자동 클릭된 경우에도 닫히게!
-      if (link.dataset.autoclick) {
-        delete link.dataset.autoclick;
-        if (window.innerWidth < 768) {
-          closeSidebar();
-        }
-        return;
-      }
       if (window.innerWidth < 768) {
         closeSidebar();
       }
     });
   });
-
-  // 자동으로 첫 번째 YouTube Videos 서브메뉴 페이지를 보여주기
-  const youtubeMenu = document.querySelector('a[href="#long-collapse"]');
-  if (youtubeMenu) {
-    youtubeMenu.addEventListener('click', function(e) {
-      const submenu = document.querySelector('#long-collapse');
-      if (submenu && !submenu.classList.contains('show')) {
-        const bsCollapse = bootstrap.Collapse.getOrCreateInstance(submenu);
-        bsCollapse.show();
-        submenu.addEventListener('shown.bs.collapse', function handler() {
-          const firstSubLink = submenu.querySelector('.nav-link[data-page]');
-          if (firstSubLink) {
-            // 자동 클릭임을 표시
-            firstSubLink.dataset.autoclick = "true";
-            firstSubLink.click();
-          }
-          submenu.removeEventListener('shown.bs.collapse', handler);
-        });
-      } else if (submenu && submenu.classList.contains('show')) {
-        const firstSubLink = submenu.querySelector('.nav-link[data-page]');
-        if (firstSubLink) {
-          firstSubLink.dataset.autoclick = "true";
-          firstSubLink.click();
-        }
-      }
-    });
-  }
 
   function closeSidebar() {
     sidebar.classList.remove('sidebar-open');
