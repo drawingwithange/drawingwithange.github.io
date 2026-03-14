@@ -81,6 +81,19 @@
             padding: 2rem 1rem 1rem 1rem;
             min-width: 0;
         }
+        .main-banner {
+            display: block;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+        .bottom-right-image-wrap {
+            text-align: right;
+            margin-top: 1rem;
+        }
+        .bottom-right-image {
+            width: 33.333%;
+            height: auto;
+        }
         #sidebar-backdrop {
             display: none;
         }
@@ -116,6 +129,9 @@
             }
             .content-area {
                 padding: 1rem;
+            }
+            .bottom-right-image {
+                width: 50%;
             }
             #sidebar-toggle-btn {
                 display: flex !important;
@@ -240,7 +256,7 @@
         <!-- Main Content -->
         <main id="content-area" class="content-area">
             <!-- Banner Image -->
-            <img src="./images/banner_wide_03.jpg" alt="Drawing with Ange Banner" class="img-fluid mb-3">
+            <img src="./images/banner_wide_03.jpg" alt="Drawing with Ange Banner" class="img-fluid main-banner">
             <!-- Text Content Wrapper for Debugging -->
                <p></p>
                <div style="height: 1.5em;"></div>
@@ -258,6 +274,9 @@
                     </a>
                     for more videos!
                 </p>
+                <div class="bottom-right-image-wrap">
+                    <img src="./images/ange_bottom_right.png" alt="Ange" class="bottom-right-image">
+                </div>
         </main>
     </div>
     <!-- 메뉴버튼을 main-layout 바깥에 둡니다 -->
